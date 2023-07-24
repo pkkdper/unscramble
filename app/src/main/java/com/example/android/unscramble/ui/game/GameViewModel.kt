@@ -1,8 +1,12 @@
 package com.example.android.unscramble.ui.game
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 
 class GameViewModel : ViewModel() {
+    init {
+        Log.d("Game Fragment", "GameViewModel created")
+    }
     private var _score = 0
     private var _currentWordCount = 0
     private var _currentScrambledWord = "test"
