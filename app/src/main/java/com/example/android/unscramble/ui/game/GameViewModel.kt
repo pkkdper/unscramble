@@ -14,4 +14,9 @@ class GameViewModel : ViewModel() {
         get() = _score
     val currentScrambledWord: String
         get() = _currentScrambledWord
+
+    override fun onCleared() {
+        super.onCleared()
+        Log.d("Game Fragment", "GameViewModel destroyed")
+    }
 }
