@@ -19,4 +19,8 @@ class GameViewModel : ViewModel() {
         super.onCleared()
         Log.d("Game Fragment", "GameViewModel destroyed")
     }
+
+    fun getNextWord() {
+        var currentWord = allWordsList.random()
+    }
 }
