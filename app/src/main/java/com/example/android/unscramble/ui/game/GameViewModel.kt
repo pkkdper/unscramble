@@ -8,6 +8,9 @@ class GameViewModel : ViewModel() {
     init {
         Log.d("Game Fragment", "GameViewModel created")
     }
+
+    private var wordList: MutableList<String> = mutableListOf()
+    private lateinit var currentWord:String
     private var _score = 0
     private var _currentWordCount = 0
     private var _currentScrambledWord = "test"
