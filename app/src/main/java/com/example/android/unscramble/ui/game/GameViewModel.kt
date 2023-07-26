@@ -5,28 +5,30 @@ import androidx.lifecycle.ViewModel
 import kotlin.random.Random
 
 class GameViewModel : ViewModel() {
+    private fun getNextWord() {
+//        val random = Random.nextInt(allWordsList.size)
+//        var currentWord = allWordsList[random]
+        var currentWord = allWordsList.random()
+
+    }
+
     init {
         Log.d("Game Fragment", "GameViewModel created")
     }
 
     private var wordList: MutableList<String> = mutableListOf()
-    private lateinit var currentWord:String
+    private lateinit var currentWord: String
     private var _score = 0
-    private var _currentWordCount = 0
-    private var _currentScrambledWord = "test"
     val score: Int
         get() = _score
+
+    private var _currentWordCount = 0
+    private var _currentScrambledWord = "test"
     val currentScrambledWord: String
         get() = _currentScrambledWord
 
     override fun onCleared() {
         super.onCleared()
         Log.d("Game Fragment", "GameViewModel destroyed")
-    }
-
-    fun getNextWord() {
-//        val random = Random.nextInt(allWordsList.size)
-//        var currentWord = allWordsList[random]
-        var currentWord = allWordsList.random()
     }
 }
