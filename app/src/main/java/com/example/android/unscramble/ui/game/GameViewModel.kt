@@ -8,8 +8,10 @@ class GameViewModel : ViewModel() {
     private fun getNextWord() {
 //        val random = Random.nextInt(allWordsList.size)
 //        var currentWord = allWordsList[random]
-        var currentWord = allWordsList.random()
-
+        currentWord = allWordsList.random()
+        val tempWord = currentWord.toCharArray()
+        tempWord.shuffle()
+            )
     }
 
     init {
