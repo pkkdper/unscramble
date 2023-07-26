@@ -2,6 +2,7 @@ package com.example.android.unscramble.ui.game
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import kotlin.random.Random
 
 class GameViewModel : ViewModel() {
     init {
@@ -21,6 +22,8 @@ class GameViewModel : ViewModel() {
     }
 
     fun getNextWord() {
+//        val random = Random.nextInt(allWordsList.size)
+//        var currentWord = allWordsList[random]
         var currentWord = allWordsList.random()
     }
 }
