@@ -5,32 +5,7 @@ import androidx.lifecycle.ViewModel
 import kotlin.random.Random
 
 class GameViewModel : ViewModel() {
-    private fun getNextWord() {
-//        val random = Random.nextInt(allWordsList.size)
-//        var currentWord = allWordsList[random]
-        currentWord = allWordsList.random()
-        val tempWord = currentWord.toCharArray()
-        tempWord.shuffle()
-
-        while(String(tempWord).equals(currentWord, false)) {
-            tempWord.shuffle()
-        }
-
-        if(wordList.contains(currentWord)) {
-            getNextWord()
-        } else {
-            _currentScrambledWord = String(tempWord)
-            ++currentWordCount
-            wordList.add(currentWord)
-        }
-    }
-
-    init {
-        Log.d("Game Fragment", "GameViewModel created")
-        getNextWord()
-    }
-
-    private var wordList: MutableList<String> = mutableListOf()
+    private var wordsList: MutableList<String> = mutableListOf()
     private lateinit var currentWord: String
     private var _score = 0
     val score: Int
@@ -40,6 +15,30 @@ class GameViewModel : ViewModel() {
     private lateinit var _currentScrambledWord: String
     val currentScrambledWord: String
         get() = _currentScrambledWord
+    /*
+    * Updates currentWord and currentScrambledWord with the next word.
+    */
+    private fun getNextWord() {
+        currentWord = allWordsList.random()
+        val tempWord = currentWord.toCharArray()
+        tempWord.shuffle()
+
+        while (String(tempWord).equals(currentWord, false)) {
+            tempWord.shuffle()
+        }
+        if (wordsList.contains(currentWord)) {
+            getNextWord()
+        } else {
+            _currentScrambledWord = String(tempWord)
+            ++currentWordCount
+            wordsList.add(currentWord)
+        }
+    }
+
+    init {
+        Log.d("Game Fragment", "GameViewModel created")
+        getNextWord()
+    }
 
     override fun onCleared() {
         super.onCleared()
