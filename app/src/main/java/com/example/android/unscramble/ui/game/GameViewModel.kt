@@ -11,8 +11,17 @@ class GameViewModel : ViewModel() {
         currentWord = allWordsList.random()
         val tempWord = currentWord.toCharArray()
         tempWord.shuffle()
+
         while(String(tempWord).equals(currentWord, false)) {
             tempWord.shuffle()
+        }
+
+        if(wordList.contains(currentWord)) {
+            getNextWord()
+        } else {
+            _currentScrambledWord = String(tempWord)
+            ++currentWordCount
+            wordList.add(currentWord)
         }
     }
 
@@ -26,7 +35,7 @@ class GameViewModel : ViewModel() {
     val score: Int
         get() = _score
 
-    private var _currentWordCount = 0
+    private var currentWordCount = 0
     private var _currentScrambledWord = "test"
     val currentScrambledWord: String
         get() = _currentScrambledWord
