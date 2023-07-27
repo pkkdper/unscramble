@@ -27,6 +27,7 @@ class GameViewModel : ViewModel() {
 
     init {
         Log.d("Game Fragment", "GameViewModel created")
+        getNextWord()
     }
 
     private var wordList: MutableList<String> = mutableListOf()
