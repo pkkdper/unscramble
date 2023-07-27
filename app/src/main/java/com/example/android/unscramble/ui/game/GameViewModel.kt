@@ -35,6 +35,13 @@ class GameViewModel : ViewModel() {
         }
     }
 
+    fun nextWord(): Boolean {
+        return if (currentWordCount < MAX_NO_OF_WORDS) {
+            getNextWord()
+            true
+        } else false
+    }
+
     init {
         Log.d("Game Fragment", "GameViewModel created")
         getNextWord()
