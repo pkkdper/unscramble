@@ -150,6 +150,8 @@ class GameFragment : Fragment() {
             .setNegativeButton(getString(R.string.exit)) { _, _ ->
                 exitGame()
             }
-            .setPositiveButton()
+            .setPositiveButton(getString(R.string.play_again)) { _, _ ->
+                restartGame()
+            }
     }
 }
