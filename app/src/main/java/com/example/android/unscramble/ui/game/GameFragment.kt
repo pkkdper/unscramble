@@ -80,6 +80,11 @@ class GameFragment : Fragment() {
 //        binding.score.text = getString(R.string.score, score)
 //        setErrorTextField(false)
 //        updateNextWordOnScreen()
+        if (viewModel.nextWord()) {
+            updateNextWordOnScreen()
+        } else {
+            showFinalScoreDialog()
+        }
     }
 
     /*
