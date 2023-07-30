@@ -81,6 +81,8 @@ class GameFragment : Fragment() {
             } else {
                 showFinalScoreDialog()
             }
+        } else {
+            setErrorTextField(true)
         }
     }
 
