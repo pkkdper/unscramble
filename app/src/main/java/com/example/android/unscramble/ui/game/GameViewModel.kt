@@ -40,14 +40,14 @@ class GameViewModel : ViewModel() {
     }
 
     fun nextWord(): Boolean {
-        return if (_currentWordCount < MAX_NO_OF_WORDS) {
+        return if (_currentWordCount.value!! < MAX_NO_OF_WORDS) {
             getNextWord()
             true
         } else false
     }
 
     private fun increaseScore() {
-        _score.value += SCORE_INCREASE
+        _score.value = (_score.value)?.plus(SCORE_INCREASE)
     }
 
     fun isUserWordCorrect(playerWord: String): Boolean {
