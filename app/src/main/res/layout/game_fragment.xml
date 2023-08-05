@@ -23,7 +23,7 @@
             type="com.example.android.unscramble.ui.game.GameViewModel" />
         <variable
             name="maxNoOfWords"
-            type="Integer" />
+            type="int" />
     </data>
 
     <ScrollView
