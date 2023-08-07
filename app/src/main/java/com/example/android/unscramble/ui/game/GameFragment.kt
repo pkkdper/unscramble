@@ -75,10 +75,6 @@ class GameFragment : Fragment() {
         binding.submit.setOnClickListener { onSubmitWord() }
         binding.skip.setOnClickListener { onSkipWord() }
 
-        // Observe the currentScrambledWord LiveData.
-        viewModel.currentScrambledWord.observe(viewLifecycleOwner, { newWord ->
-            binding.textViewUnscrambledWord.text = newWord })
-
         //Observe the score LiveData
         viewModel.score.observe(viewLifecycleOwner, {newScore ->
             binding.score.text =
