@@ -7,6 +7,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.MediatorLiveData
 
 class GameViewModel : ViewModel() {
     private var wordsList: MutableList<String> = mutableListOf()
@@ -21,21 +22,21 @@ class GameViewModel : ViewModel() {
 
     private val _currentScrambledWord = MutableLiveData<String>()
 
-    val currentScrambledWord: LiveData<Spannable> = Transformations.map(_currentScrambledWord) {
-        if (it == null) {
-            SpannableString("")
-        } else {
-            val scrambledWord = it.toString()
-            val spannable: Spannable = SpannableString(scrambledWord)
-            spannable.setSpan(
-                TtsSpan.VerbatimBuilder(scrambledWord).build(),
-                0,
-                scrambledWord.length,
-                Spannable.SPAN_INCLUSIVE_INCLUSIVE
-            )
-            spannable
+        val currentScrambledWord: LiveData<Spannable> = MediatorLiveData<Spannable>().apply {
+            addSource(_currentScrambledWord) { scrambledWord ->
+                value = if (scrambledWord == null) {
+                    SpannableString("")
+                } else {
+                    val spannable: Spannable = SpannableString(scrambledWord)
+                    spannable.setSpan(
+                        TtsSpan.VerbatimBuilder(scrambledWord).build(),
+                        0,
+                        scrambledWord.length,
+                        Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                    )
+                    spannable
         }
-    }
+    }}
 
     /*
     * Updates currentWord and currentScrambledWord with the next word.
